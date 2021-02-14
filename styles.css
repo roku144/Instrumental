@@ -1,0 +1,58 @@
+/*selecting every element, before, after, and wildcard.
+Changing box size to border-box */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: blueviolet;
+    margin: 0;
+    min-height: 100vh;
+    /*set min height to 100 view height to make it possible to center piano in middle*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.piano{
+    display: flex;
+    /*all our keys will line up next to each other instead of on top of each other*/
+
+}
+
+.key{
+    /*width is 1/4 of height and margin left and margin right are half of width, so we use CSS var's to assign values*/
+
+height: calc(var(--width)*4);
+width: var(--width);
+}
+
+.white{
+--width: 100px;
+
+background-color: white;
+border: 1px solid rgb(51, 25, 25);
+
+}
+.white.active{
+    background-color: #CCC;
+}
+
+
+.black{
+    --width: 60px;  
+    background-color: black;
+    /*we want the black keys to overlap the white keys, so we add a margin on both sides
+    margin is calculated by dividing width by -2 (-half of width)*/
+    margin-left: calc(var(--width)/-2);
+    margin-right: calc(var(--width)/-2);
+    /*we want the black keys to show up over all white keys, so we change the z index to 2*/
+    z-index: 2;
+}
+
+
+.black.active{
+    background-color: #333;
+}
